@@ -380,9 +380,19 @@ function buildFooter(lang) {
       <a href="#" class="footer-link" data-i18n="footer.privacy">${t['footer.privacy']}</a>
       <a href="#" class="footer-link" data-i18n="footer.terms">${t['footer.terms']}</a>
     </div>
+    <p class="nx-credit" data-nx-credit>${nxCredit(lang)}</p>
   </div>
 </footer>`;
 }
+
+
+/* ── Crèdit Nexmetis Tech · NexSocial ── */
+const NX_CREDIT = {
+  es: '<span class="nx-credit__part">Diseño y desarrollo web por <a href="https://nexmetis.nexsocial.org/" target="_blank" rel="noopener">Nexmetis Tech</a></span> <span class="nx-credit__sep" aria-hidden="true">·</span> <span class="nx-credit__part">División tecnológica de <a href="https://nexsocial.org/" target="_blank" rel="noopener">NexSocial SCCL</a></span>',
+  ca: '<span class="nx-credit__part">Disseny i desenvolupament web per <a href="https://nexmetis.nexsocial.org/" target="_blank" rel="noopener">Nexmetis Tech</a></span> <span class="nx-credit__sep" aria-hidden="true">·</span> <span class="nx-credit__part">Divisió tecnològica de <a href="https://nexsocial.org/" target="_blank" rel="noopener">NexSocial SCCL</a></span>',
+  en: '<span class="nx-credit__part">Web design &amp; development by <a href="https://nexmetis.nexsocial.org/" target="_blank" rel="noopener">Nexmetis Tech</a></span> <span class="nx-credit__sep" aria-hidden="true">·</span> <span class="nx-credit__part">Technology division of <a href="https://nexsocial.org/" target="_blank" rel="noopener">NexSocial SCCL</a></span>',
+};
+function nxCredit(lang) { return NX_CREDIT[lang] || NX_CREDIT.es; }
 
 /* ── Apply translations ──────────────────────────────── */
 function applyLang(lang) {
@@ -391,6 +401,7 @@ function applyLang(lang) {
     const key = el.getAttribute('data-i18n');
     if (t[key]) el.textContent = t[key];
   });
+  document.querySelectorAll('[data-nx-credit]').forEach(el => { el.innerHTML = nxCredit(lang); });
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.lang === lang);
   });

@@ -979,3 +979,13 @@ iframe, video { cursor: auto; }
 
 /* Pantalles tàctils: no hi ha cursor, el PNG seria pes mort */
 @media (hover: none) { body { cursor: auto; } }
+
+/* ── Crèdit Nexmetis Tech · NexSocial (model comú) ── */
+.nx-credit { font-size: 12px; line-height: 1.5; opacity: .75; }
+.nx-credit a { color: inherit; text-decoration: none; border-bottom: 1px solid currentColor; }
+.nx-credit a:hover, .nx-credit a:focus-visible { opacity: 1; }
+.nx-credit__part { white-space: nowrap; }
+@media (max-width: 640px) { .nx-credit__sep { display: none; } .nx-credit__part { display: block; } }
+.footer-bottom .nx-credit { flex-basis: 100%; margin: 4px 0 0; text-align: right; }
+@media (max-width: 640px) { .footer-bottom .nx-credit { text-align: left; } }
+.footer-bottom .nx-credit { margin-bottom: 64px; }
